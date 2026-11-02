@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "NF Le Petit Cochon";
+  src: url("/fonts/nf-le-petit-cochon.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Pencilant Script";
+  src: url("/fonts/pencilant-script.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  --monsoon: #1a3d4a;
+  --earth-red: #6b2020;
+  --cream: #f7f4f0;
+  --charcoal: #1e1e1e;
+  --font-primary: "NF Le Petit Cochon", sans-serif;
+  --font-secondary: "Pencilant Script", cursive;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--monsoon); scroll-behavior: auto; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--font-secondary);
+  overflow-x: hidden;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection { background: var(--earth-red); color: var(--cream); }
+
+.brand-display {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.brand-secondary {
+  font-family: var(--font-secondary);
+}
+
+.ui-copy {
+  font-family: var(--font-secondary);
+  letter-spacing: 0.02em;
+}
+
+.text-balance { text-wrap: balance; }
+
+.wet-glass {
+  background:
+    radial-gradient(ellipse at 10% 12%, rgba(255,255,255,.28) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 23% 47%, rgba(255,255,255,.18) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 66% 24%, rgba(255,255,255,.24) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 83% 72%, rgba(255,255,255,.17) 0 2px, transparent 3px),
+    linear-gradient(115deg, rgba(255,255,255,.08), rgba(255,255,255,.01));
+  background-size: 42px 42px, 74px 74px, 58px 58px, 91px 91px, 100% 100%;
+  backdrop-filter: blur(1.2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes rain-fall {
+  0% { transform: translate3d(0, -18vh, 0) rotate(7deg); }
+  100% { transform: translate3d(-24px, 125vh, 0) rotate(7deg); }
+}
+
+@keyframes rain-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: .42; }
+  50% { transform: translate3d(1.5%, -1%, 0); opacity: .62; }
+}
+
+.rain-drop {
+  transform-origin: top;
+  animation-name: rain-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: blur(.25px);
+}
+
+.rain-haze {
+  background:
+    radial-gradient(circle at 18% 34%, rgba(255,255,255,.07), transparent 22%),
+    radial-gradient(circle at 76% 62%, rgba(255,255,255,.055), transparent 24%),
+    linear-gradient(115deg, rgba(255,255,255,.025), transparent 44%);
+  animation: rain-drift 8s ease-in-out infinite;
+}
+
+.rain-glass {
+  background:
+    radial-gradient(ellipse at 8% 18%, rgba(255,255,255,.34) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 24% 46%, rgba(255,255,255,.25) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 67% 28%, rgba(255,255,255,.30) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 84% 74%, rgba(255,255,255,.22) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 46% 82%, rgba(255,255,255,.18) 0 1px, transparent 2px);
+  background-size: 48px 48px, 81px 81px, 63px 63px, 96px 96px, 72px 72px;
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 767px) {
+  .rain-drop { opacity: .15 !important; }
+  .rain-glass { opacity: .38 !important; }
+}

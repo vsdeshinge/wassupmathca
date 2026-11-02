@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///Users/vivekanandshridhardeshinge/Downloads/hhhhh/wassup-matcha/components/SmoothScroll.tsx"],"sourcesContent":["\"use client\";\n\nimport { useEffect } from \"react\";\nimport Lenis from \"lenis\";\nimport \"lenis/dist/lenis.css\";\n\nexport function SmoothScroll() {\n  useEffect(() => {\n    const lenis = new Lenis({\n      autoRaf: true,\n      duration: 1.05,\n      smoothWheel: true,\n    });\n\n    return () => lenis.destroy();\n  }, []);\n\n  return null;\n}\n"],"names":["SmoothScroll","lenis","autoRaf","duration","smoothWheel","destroy"],"mappings":";;;;AAEA;AACA;AAHA;;;;AAMO,SAASA;IACd,IAAA,kNAAS,EAAC;QACR,MAAMC,QAAQ,IAAI,kJAAK,CAAC;YACtBC,SAAS;YACTC,UAAU;YACVC,aAAa;QACf;QAEA,OAAO,IAAMH,MAAMI,OAAO;IAC5B,GAAG,EAAE;IAEL,OAAO;AACT"}}]
+}
