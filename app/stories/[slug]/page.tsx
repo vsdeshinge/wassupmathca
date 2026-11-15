@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { galleryStories } from "@/components/sections/02-Gallery/content";
 import { drinks } from "@/components/sections/04-Menu/content";
@@ -22,7 +23,7 @@ export default async function MatchaStoryPage({ params }: Props) {
     return <main className="min-h-screen bg-[#f9f7f4] text-[#1a3d4a]">
       <div className="mx-auto max-w-[1200px] px-5 pb-24 pt-8 sm:px-10 lg:px-16">
         <header className="flex items-center justify-between gap-4 border-b border-[#1a3d4a]/25 pb-5 brand-secondary text-[11px] uppercase tracking-[.14em]">
-          <Link href="/#menu" className="transition-opacity hover:opacity-60">← BACK TO THE MENU</Link>
+          <Link href="/#menu" className="transition-opacity hover:opacity-60"><ArrowLeft size={16} className="inline-block mr-2" aria-hidden="true"/>BACK TO THE MENU</Link>
           <span>WASSUP MATCHA / THE MENU</span>
         </header>
         <article className="pt-16 md:pt-24">
@@ -35,7 +36,7 @@ export default async function MatchaStoryPage({ params }: Props) {
             <p className="brand-secondary text-sm uppercase tracking-[.18em]">A LITTLE MORE ABOUT {drink.name.toUpperCase()}</p>
             <p className="brand-secondary mt-6 max-w-[650px] text-xl leading-relaxed md:text-3xl">Meet {drink.name}, one of the drinks featured on the Wassup Matcha menu. Come discover it in person.</p>
             <p className="mt-6 text-sm opacity-70">Images are temporary editorial references. Drink ingredients and preparation details will be added once confirmed by the café.</p>
-            <Link href="/#visit" className="mt-10 inline-flex rounded-full bg-[#1a3d4a] px-7 py-3 text-[#f9f7f4]">Find us ↗</Link>
+            <Link href="/#visit" className="mt-10 inline-flex rounded-full bg-[#1a3d4a] px-7 py-3 text-[#f9f7f4]">Find us <ArrowUpRight size={18} className="inline-block ml-1" aria-hidden="true"/></Link>
           </div>
         </article>
       </div>
@@ -46,7 +47,7 @@ export default async function MatchaStoryPage({ params }: Props) {
   return <main className="min-h-screen bg-[#f9f7f4] text-[#1a3d4a]">
     <div className="mx-auto max-w-[1600px] px-5 pb-24 pt-8 sm:px-10 lg:px-16">
       <header className="flex items-center justify-between gap-4 border-b border-[#1a3d4a] pb-5 brand-secondary text-[11px] uppercase tracking-[.14em]">
-        <Link href="/#gallery" className="transition-opacity hover:opacity-60">← BACK TO THE STORIES</Link>
+        <Link href="/#gallery" className="transition-opacity hover:opacity-60"><ArrowLeft size={16} className="inline-block mr-2" aria-hidden="true"/>BACK TO THE STORIES</Link>
         <span>WASSUP MATCHA® / {story.number}</span>
       </header>
       <article>
@@ -71,10 +72,10 @@ export default async function MatchaStoryPage({ params }: Props) {
         </section>)}
       </article>
       <Link href={`/stories/${next.slug}`} className="group mt-20 block border-b border-[#1a3d4a] pb-10">
-        <span className="brand-secondary text-[11px] uppercase tracking-[.18em] text-[#1a3d4a]">NEXT STORY ↗</span>
+        <span className="brand-secondary text-[11px] uppercase tracking-[.18em] text-[#1a3d4a]">NEXT STORY <ArrowUpRight size={14} className="inline-block ml-1" aria-hidden="true"/></span>
         <span className="mt-5 block brand-secondary text-[clamp(2.6rem,7vw,7rem)] font-normal leading-none tracking-[-.07em] transition-transform group-hover:translate-x-2">{next.title}</span>
       </Link>
-      <footer className="mt-10 flex justify-between brand-secondary text-[10px] uppercase tracking-[.17em] text-[#1a3d4a]"><span>WASSUP MATCHA</span><Link href="/">BACK HOME ↗</Link></footer>
+      <footer className="mt-10 flex justify-between brand-secondary text-[10px] uppercase tracking-[.17em] text-[#1a3d4a]"><span>WASSUP MATCHA</span><Link href="/">BACK HOME <ArrowUpRight size={14} className="inline-block ml-1" aria-hidden="true"/></Link></footer>
     </div>
   </main>;
 }

@@ -4,16 +4,10 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { MapPin, Instagram, BookOpen, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
-import { RainLayer } from "@/components/shared/RainLayer";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const [videoReady, setVideoReady] = useState(false);
-  const [videoSource, setVideoSource] = useState(0);
-  const sources = [
-    "https://videos.pexels.com/video-files/6683732/6683732-hd_1920_1080_25fps.mp4",
-    "/video/hero/temporary-fallback.mp4",
-  ];
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.9, 0]);
@@ -21,27 +15,25 @@ export function Hero() {
   return (
     <section ref={ref} id="top" className="relative h-[112svh] min-h-[570px] bg-[#1a3d4a] text-[#f9f7f4]">
       <div className="sticky top-0 h-[100svh] min-h-[570px] overflow-hidden">
-        <div className="absolute inset-0 bg-[#52615c] bg-cover bg-center" style={{ backgroundImage: "url(https://images.pexels.com/photos/31199965/pexels-photo-31199965.jpeg?auto=compress&cs=tinysrgb&w=1600)" }} />
+        <div className="absolute inset-0 bg-[#1a3d4a]" />
         <motion.video
-          key={videoSource}
           style={{ scale, opacity: videoReady ? 1 : 0 }}
           autoPlay muted playsInline loop preload="metadata"
-          poster="https://images.pexels.com/photos/31199965/pexels-photo-31199965.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          poster="/video/hero/wassup-matcha-poster.jpg"
           onCanPlay={() => setVideoReady(true)}
-          onError={() => { setVideoReady(false); if (videoSource < sources.length - 1) setVideoSource((current) => current + 1); }}
+          onError={() => setVideoReady(false)}
           aria-label="Matcha being prepared"
           className="absolute inset-0 h-full w-full object-cover"
         >
-          <source src={sources[videoSource]} type="video/mp4" />
+          <source src="/video/hero/wassup-matcha-hero.mp4" type="video/mp4" />
         </motion.video>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#08161b]/45 via-[#08161b]/15 to-[#08161b]/75" />
-        <div className="hidden md:block"><RainLayer intensity={24} /></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#08161b]/30 via-transparent to-[#08161b]/60" />
         <motion.div style={{ opacity }} className="relative z-10 flex h-full flex-col justify-between px-5 pb-[max(26px,env(safe-area-inset-bottom))] pt-8 md:px-12 md:pb-10 md:pt-10">
           {/* The brand mark is anchored at the top-left, without changing the original asset. */}
           <a href="#top" aria-label="Wassup Matcha home" className="absolute left-5 top-6 z-20 flex w-[148px] items-center sm:w-[192px] md:left-12 md:top-10 md:w-[230px]">
             <Image src="/logo/wassup-matcha-navbar.png" alt="Wassup Matcha" width={851} height={452} priority className="h-auto w-full object-contain brightness-0 invert drop-shadow-[0_4px_16px_rgba(0,0,0,.28)]" />
           </a>
-          <a href="#gallery" className="absolute right-5 top-8 hidden items-center gap-1.5 rounded-full border border-white/35 bg-black/10 px-4 py-2 text-sm backdrop-blur-sm md:right-12 md:top-10 md:inline-flex">Discover <ChevronDown size={15} /></a>
+          <a href="#gallery" className="absolute bottom-40 right-5 inline-flex items-center gap-1.5 rounded-full border border-white/35 bg-black/10 px-4 py-2 text-sm backdrop-blur-sm md:bottom-10 md:right-12">Discover <ChevronDown size={15} /></a>
           <div className="absolute bottom-[max(26px,env(safe-area-inset-bottom))] left-12 z-20 hidden text-left md:block">
             <p className="text-[11px] tracking-[.09em] text-white/80 sm:text-xs">OPEN EVERY DAY</p>
             <p className="mt-1 text-sm font-semibold tracking-wide text-white sm:text-base">11 AM – 9 PM</p>
