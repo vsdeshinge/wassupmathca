@@ -1,0 +1,2 @@
+import type {MetadataRoute} from "next";import {posts} from "@/components/sections/05-Blog/content";
+export default function sitemap():MetadataRoute.Sitemap{const origin=(process.env.NEXT_PUBLIC_SITE_URL||"http://localhost:3000").replace(/\/$/,"");return [{url:origin,changeFrequency:"weekly",priority:1},{url:`${origin}/blog`,changeFrequency:"weekly",priority:0.8},...posts.map(p=>({url:`${origin}/blog/${p.slug}`,changeFrequency:"monthly" as const,priority:0.7}))];}
